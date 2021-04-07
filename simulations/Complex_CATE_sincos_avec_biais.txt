@@ -1,0 +1,11 @@
+Nombre d'observations =1000
+Dimension =2
+Score de propension =0.5
+fonction f = sin
+fonction g = cos
+Base learner =Linear regression
+Meta learner =S-Learner et T-Learner
+ATE estimée par la méthode de monte carlo: -0.0012415592895114464
+Calcul de la valeur de l'ATE avec S-Learner = 0.05286395009332981.
+Calcul de la valeur de l'ATE avec T-Learner = 0.049958227122648594.
+Intervalle de confiance pour l'ATE : [-0.1502364695985263, 0.14163222960075864].
