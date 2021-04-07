@@ -47,7 +47,6 @@ def visualization(beta, bias, B, N, d, f, g, p, base_metalerner=SLearner()):
     
     
     
-    
 def graphic_comparison(nb_obs, d, p, beta, bias, f, g, B, base_learner_homemade, base_learner_causalml):
 
   '''
@@ -85,7 +84,7 @@ def graphic_comparison(nb_obs, d, p, beta, bias, f, g, B, base_learner_homemade,
     ates_sup.append(sup)
 
     # S learner causal ML
-    X, W, Y = causal_generation(nb_obs, d, beta, bias, f, g, p)
+    X, W, Y = causal_generation(n, d, beta, bias, f, g, p)
     lr = base_learner_causalml
     te, lb, ub = lr.estimate_ate(X, W, Y)
     ate_causal_ml.append(te[0])
@@ -93,11 +92,16 @@ def graphic_comparison(nb_obs, d, p, beta, bias, f, g, B, base_learner_homemade,
     ub_causal_ml.append(ub[0])
 
 
+  plt.figure(figsize=(12,7))
   plt.plot(nb_obs,ates, color='blue',label = 'ATE_homemade')
   plt.fill_between(nb_obs, ates_inf,ates_sup,alpha = 0.5, color='blue', label = 'IC_ATE_homemade')
   plt.plot(nb_obs, ate_causal_ml,color='orange',label='ATE_causal_ml')
   plt.fill_between(nb_obs, lb_causal_ml, ub_causal_ml,alpha = 0.5, color='orange',label='IC_ATE_causalml')
+  plt.xlabel("Nombre d'observations")
+  plt.ylabel("Valeurs de l'ATE")
+  plt.title("Evaluations de l'ATE en fonction du nombre d'observations")
   plt.legend()
+  plt.savefig('visu.pdf')
   plt.show()
   
   

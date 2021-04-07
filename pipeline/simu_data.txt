@@ -1,7 +1,0 @@
-Nombre d'observations =1000
-Dimension =2
-Score de propension =0.7
-fonction f =<function <lambda> at 0x0000022040993E18>
-fonction g =<function <lambda> at 0x0000022063CEE048>
-Base learner =Linear regression
-Meta learner =S-Learner et T-Learner
