@@ -18,18 +18,25 @@ from slearner import SLearner
 from tlearner import TLearner
 from realvalues_estimation import monte_carlo
 from confidence_interval import IC
-from visualization import visualization
+from visualization import visualization, graphic_comparison
+
+from save_data import save_data
+
+#from causalml.inference.meta import LRSRegressor
 
 
 if __name__ == '__main__':
     # paramètres pour faciliter le calcul de l'ATE par intégration
     N = 1000
-    d = 2                # d = 2, afin de pouvoir être calculé par intégration et avec Monte Carlo
-    p = 0.5
-    beta = np.random.uniform(1, 30, (2, d))                   
-    bias = np.random.uniform(1, 30, (2, 1))                  
+    d = 2                                     # d = 2, afin de pouvoir être calculé par intégration et avec Monte Carlo
+    p = 0.7
+    beta = np.random.uniform(1, 30, (1, d))
+    beta = np.vstack((beta,beta))               # beta0 = beta1           
+    bias = np.array([10,0])                   # Gamma0 = Gamma1 
     f = lambda x:x
     g = lambda x:x
+    
+    save_data("simu_data.txt", N, d, p, f, g, "Linear regression", "S-Learner et T-Learner")
     
     print("------------ Estimation de l'ATE/CATE sur des données synthétiques --------------")
     print()
@@ -51,18 +58,24 @@ if __name__ == '__main__':
     ate_hat_T = tlearner.predict_ATE()
     print("- Calcul de la valeur de l'ATE avec T-Learner = {}.".format(ate_hat_T))
 
+
     # Intervalle de confiance
     B = 999
     Bootstraps = causal_generation_bootstrap(beta, bias, B, N, d, f, g, p)
     _, IC_inf, IC_sup = IC(Bootstraps, base_metalerner = SLearner(), alpha=0.05)
     print("- Intervalle de confiance pour l'ATE : [{}, {}].".format(IC_inf, IC_sup))
-    
+
+ 
     # Estimation avec Monté-Carlo
     print('- ATE estimée par la méthode de monte carlo: {}'.format(monte_carlo(10**6, d, beta, bias, f, g)))
     
+    
     # Visualization
+    B = 999
     visualization(beta, bias, B, N, d, f, g, p, base_metalerner = SLearner())
     
+
+
     
     
     
