@@ -22,7 +22,7 @@ from visualization import visualization, graphic_comparison
 
 from save_data import save_data
 
-#from causalml.inference.meta import LRSRegressor
+from causalml.inference.meta import LRSRegressor
 
 
 if __name__ == '__main__':
@@ -74,7 +74,11 @@ if __name__ == '__main__':
     B = 999
     visualization(beta, bias, B, N, d, f, g, p, base_metalerner = SLearner())
     
-
+    nb_obs = [i for i in range(100,1000,100)]
+    """
+    graphic_comparison(nb_obs, d, p, beta, bias, f, g, B, 
+                       base_learner_homemade = LRSRegressor(), base_learner_causalml=SLearner())
+    """
 
     
     

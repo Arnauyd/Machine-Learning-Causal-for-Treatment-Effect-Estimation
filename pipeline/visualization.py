@@ -48,7 +48,7 @@ def visualization(beta, bias, B, N, d, f, g, p, base_metalerner=SLearner()):
     
     
     
-def graphic_comparison(nb_obs, d, p, beta, bias, f, g, B, base_learner_homemade):
+def graphic_comparison(nb_obs, d, p, beta, bias, f, g, B, base_learner_homemade, base_learner_causalml):
 
   '''
   Create a graphic to compare our bases learners vs base learners from causalml 
@@ -56,14 +56,11 @@ def graphic_comparison(nb_obs, d, p, beta, bias, f, g, B, base_learner_homemade)
   Input :
     
   B : Nombre d'échantillons Boostrap, 999 est une valeur par défaut pertinente
-  nb_obs : Nombre de lignes da la matrice X, les listes sont acceptables 
-  i.e. nombre de personnes, 1000 par défaut
-  dim : Nombre de colonnes de la matrice X i.e. nombres de caractéristiques 
-  (features), 2 par défaut
+  nb_obs : Nombre de lignes da la matrice X, les listes sont acceptables i.e. nombre de personnes, 1000 par défaut
+  dim : Nombre de colonnes de la matrice X i.e. nombres de caractéristiques (features), 2 par défaut
   beta : Vecteur de dimension (2, dim).
   bias : Vecteur de dimension (1, 2).
-  W : Vecteur de dimension (1, Nobs) contenant des 0 ou 1 pour désigner 
-  l'affectation du traitement.
+  W : Vecteur de dimension (1, Nobs) contenant des 0 ou 1 pour désigner l'affectation du traitement.
   f et g sont des fonctions, identité par défaut
     
   Output:
@@ -78,29 +75,29 @@ def graphic_comparison(nb_obs, d, p, beta, bias, f, g, B, base_learner_homemade)
   ates_inf = []
   ates_sup = []
 
-  for n in range(nb_obs) :
+  for n in nb_obs :
 
     # Génération des données
-    Bootstraps = causal_generation_bootstrap(beta, bias, B, n, 2, f, g, p) 
+    Bootstraps = causal_generation_bootstrap(beta, bias, B, n, d, f, g, p)
     mu, inf, sup = IC(Bootstraps, base_metalerner=base_learner_homemade, alpha=0.05)
     ates.append(mu)
     ates_inf.append(inf)
     ates_sup.append(sup)
 
     # S learner causal ML
-    X, W, Y = causal_generation(n, d, beta, bias, f, g, p)
-    """
+    X, W, Y = causal_generation(nb_obs, d, beta, bias, f, g, p)
     lr = base_learner_causalml
     te, lb, ub = lr.estimate_ate(X, W, Y)
     ate_causal_ml.append(te[0])
     lb_causal_ml.append(lb[0])
     ub_causal_ml.append(ub[0])
-    """
-    
-    plt.plot(nb_obs,ates, color='blue',label = 'ATE_homemade')
-    plt.fill_between(nb_obs, ates_inf,ates_sup,alpha = 0.5, color='blue', label = 'IC_ATE_homemade')
-    #plt.plot(nb_obs, ate_causal_ml,color='orange',label='ATE_causal_ml')
-    #plt.fill_between(nb_obs, lb_causal_ml, ub_causal_ml, alpha = 0.5, color='orange',label='IC_ATE_causalml')
-    plt.legend()
-    plt.show()
+
+
+  plt.plot(nb_obs,ates, color='blue',label = 'ATE_homemade')
+  plt.fill_between(nb_obs, ates_inf,ates_sup,alpha = 0.5, color='blue', label = 'IC_ATE_homemade')
+  plt.plot(nb_obs, ate_causal_ml,color='orange',label='ATE_causal_ml')
+  plt.fill_between(nb_obs, lb_causal_ml, ub_causal_ml,alpha = 0.5, color='orange',label='IC_ATE_causalml')
+  plt.legend()
+  plt.show()
+  
   
