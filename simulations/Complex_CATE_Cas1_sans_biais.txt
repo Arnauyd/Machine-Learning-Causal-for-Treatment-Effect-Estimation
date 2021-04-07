@@ -1,0 +1,14 @@
+Nombre d'observations =1000
+Dimension =2
+Score de propension =0.5
+fonction f =identity
+fonction g =identity
+Base learner =LinearRegression()
+Meta learner =S-Learner et T-Learner
+ATE Monte Carlo =-0.007501232003969675
+IC inf Monte Carlo =-0.646506493739551
+IC sup Monte Carlo =0.6315050044746543
+ATE S-leaner  =-0.025823731058423505
+ATE S-leaner Causalml =-0.025823731058400412
+ATE T-leaner =-0.025289982540437676
+ATE T-leaner Causalml =-0.025289982540437676
