@@ -1,5 +1,5 @@
-# Projet Fil Rouge - Air Liquide : Machine Learning Causal pour l’estimation des effets d’un traitement
-_(juste en dessous des badges sympatiques à placer)_
+# Projet Fil Rouge - Air Liquide 
+## Machine Learning Causal pour l’estimation des effets d’un traitement
 
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)  [![forthebadge](http://forthebadge.com/images/badges/powered-by-electricity.svg)](http://forthebadge.com)
 
