@@ -44,6 +44,12 @@ Ensuite, on simule l’affectation du traitement selon un vecteur W de longueur 
 
 Finalement, on simule les réponses potentielles de chaque individu au traitement. Pour cela on spécifie des fonctions mu0 et mu1 appelée les fonctions réponses, et on calcule les sorties Y selon la formule.
 
+A l’aide des données simulées générées, on estime l'effet conditionnel moyen du traitement (CATE) et l'effet moyen du traitement (ATE) à l’aide des différents estimateurs.
+
+## Résultats 
+
+Le pipeline d’apprentissage automatique causal permet d'effectuer plusieurs simulations où on considère des situations différentes pour avoir des informations sur le comportement de chaque estimateur. Ce pipeline produit deux types de sorties.
+
 ## Auteurs
 Membres de l'équipe : 
 * **Amal Benali** _alias_ [@AmalB](https://github.com/)
