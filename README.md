@@ -64,6 +64,18 @@ Premièrement, on calcule les intervalles de confiance sur l’ATE à partir de 
     <img src='img/formule_IC.JPG'>
 </p> 
 
+La deuxième méthode consiste à estimer la valeur de l’ATE à partir du CATE à l’aide d’une approche Monté Carlo présentée par la formule ci-dessous. La grandeur G représente l'ATE. C'est l’espérance du CATE pouvant être calculée par une intégrale.
+
+<p align="center">
+    <img src='img/formule_mc.JPG'>
+</p> 
+
+Ce calcul est compliqué dès lors que la dimension d de la matrix X est supérieure ou égale à 2. Or la loi des grands nombres affirme que pour un nombre très grand N on peut estimer la valeur de l'intégrale à l'aide d’une moyenne empirique illustrée par la formule ci-dessous.
+
+<p align="center">
+    <img src='img/formule_mc1.JPG'>
+</p> 
+
 ### Approche basée sur le clustering
 
 Cette approche vient après la construction du pipeline et n’est pas du tout liée à cette dernière. Chacune a un but différent. Le pipeline d’apprentissage automatique causal permet d’effectuer plusieurs tests selon différents cas d’utilisation afin de trouver les forces et faiblesses de chaque estimateur. L’objectif de cette approche par clustering est de donner les moyens d'explorer et d'interpoler les résultats obtenus sur plusieurs cas d’utilisation via le pipeline.
