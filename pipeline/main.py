@@ -17,7 +17,7 @@ from confidence_interval import IC
 from visualization import visualization, graphic_comparison
 
 from save_data import save_data
-
+from tab_generation import tab_gen
 #from causalml.inference.meta import LRSRegressor
 
 
