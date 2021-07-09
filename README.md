@@ -36,6 +36,10 @@ Durant notre projet, on fait des études sur des données simulées dans le cadr
 Dans cette partie, on explique les différentes étapes lors de la construction du pipeline d’apprentissage automatique causal i.e. causal machine learning. Ce dernier est un outil utilisé pour mener une étude de simulation approfondie comparant les performances des différents estimateurs afin de mieux appréhender leurs applications sur des données réelles.
 On explore également l’estimation de l’effet d’un traitement pour des sous-populations d’intérêts. L’ambition est de trouver des profils types à l’aide d’une approche basée sur le clustering pour recommander le type d’intervention le plus adapté à chaque individu ou à chaque groupe d’individus.
 
+### Pipeline du machine learning causal
+
+
+
 ## Fabriqué avec
 
 Entrez les programmes/logiciels/ressources que vous avez utilisé pour développer votre projet
