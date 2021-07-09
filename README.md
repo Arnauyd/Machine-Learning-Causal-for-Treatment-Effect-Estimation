@@ -46,6 +46,9 @@ Finalement, on simule les réponses potentielles de chaque individu au traitemen
 
 A l’aide des données simulées générées, on estime l'effet conditionnel moyen du traitement (CATE) et l'effet moyen du traitement (ATE) à l’aide des différents estimateurs.
 
+Ensuite il est judicieux de mettre en place des indicateurs de qualité caractérisant la précision de chaque estimateur. Cependant l’ATE n’est pas une fonction de prédiction, c’est simplement un coeffcient réel qui mesure la magnitude d’un effet de traitement. Nous n’avons pas appris une fonction de prédiction qui pour un vecteur d’entre X renvoie une prédiction. Cela n’a donc pas de sens de calculer un critère de qualité prédictive (MSE, MAE, etc). On adopte deux méthodes pour évaluer la qualité de notre estimateur d’un effet de traitement.
+Premièrement, on calcule les intervalles de confiance sur l’ATE à partir de la version la plus simple du bootstrap. On tire un nombre m d’observations avec remise pour constituer un nouvel échantillon artificiel, puis on applique un estimateur pour estimer la valeur de l'ATE pour chaque échantillon. On répète ces deux étapes B fois et on récupère une liste contenant un nombre B de valeurs de l’ATE. A partir de ces répliques, nous pouvons construire un intervalle de confiance pour l’ATE de niveau (asymptotique) 1 − alpha.
+
 ## Résultats 
 
 Le pipeline d’apprentissage automatique causal permet d'effectuer plusieurs simulations où on considère des situations différentes pour avoir des informations sur le comportement de chaque estimateur. Ce pipeline produit deux types de sorties.
