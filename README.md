@@ -42,28 +42,11 @@ On explore également l’estimation de l’effet d’un traitement pour des sou
     <img src='img/pipeline.JPG'>
 </p> 
 
-La figure ci-dessus montre le schéma récapitulatif du notre pipeline. Tout d’abord, on commence par générer des données simulées. Pour cela, on produit une matrice de données X avec d colonnes et N lignes. Cette matrice représente les caractéristiques (features) des sujets étudiés, d correspond au nombre de caractéristiques de chaque individu et N est le nombre d’observations autrement dit le nombre de personnes participant à l’étude. Chaque observation i correspondant à une ligne $X_{i}$ suit la loi normale.
+La figure ci-dessus montre le schéma récapitulatif du notre pipeline. Tout d’abord, on commence par générer des données simulées. Pour cela, on produit une matrice de données X avec d colonnes et N lignes. Cette matrice représente les caractéristiques (features) des sujets étudiés, d correspond au nombre de caractéristiques de chaque individu et N est le nombre d’observations autrement dit le nombre de personnes participant à l’étude. Chaque observation i correspondant à une ligne Xi suit la loi normale.
 
+Ensuite, on simule l’affectation du traitement selon un vecteur W de longueur N. Le i-ème élément de ce vecteur correspond à une valeur dans {0, 1} indiquant si le sujet i reçoit le traitement. Lors de ce projet, on procède de deux façons pour calculer le vecteur W. Dans le premier cas, on attribue le traitement de manière aléatoire c’est-à-dire sans prendre compte des caractéristiques de l’individu. On fixe un paramètre p appelé score de propension dont la valeur est entre 0 et 1 et on génère N valeurs avec à chaque fois une probabilité p d’avoir 1 comme le montre la formule. Dans le deuxième cas, les caractéristiques des sujets étudiés sont considérées lors de l’attribution du traitement. Le score de propension devient une fonction de X. Par conséquent, chaque individu i a une probabilité différente d’avoir le traitement.
 
-## Fabriqué avec
-
-Entrez les programmes/logiciels/ressources que vous avez utilisé pour développer votre projet
-
-_exemples :_
-* [Materialize.css](http://materializecss.com) - Framework CSS (front-end)
-* [Atom](https://atom.io/) - Editeur de textes
-
-## Contributing
-
-Si vous souhaitez contribuer, lisez le fichier [CONTRIBUTING.md](https://example.org) pour savoir comment le faire.
-
-## Versions
-Listez les versions ici 
-_exemple :_
-**Dernière version stable :** 5.0
-**Dernière version :** 5.1
-Liste des versions : [Cliquer pour afficher](https://github.com/your/project-name/tags)
-_(pour le lien mettez simplement l'URL de votre projets suivi de ``/tags``)_
+Finalement, on simule les réponses potentielles de chaque individu au traitement. Pour cela on spécifie des fonctions mu0 et mu1 appelée les fonctions réponses, et on calcule les sorties Y selon la formule.
 
 ## Auteurs
 Listez le(s) auteur(s) du projet ici !
@@ -72,8 +55,4 @@ Listez le(s) auteur(s) du projet ici !
 Lisez la liste des [contributeurs](https://github.com/your/project/contributors) pour voir qui à aidé au projet !
 
 _(pour le lien mettez simplement l'URL de votre projet suivi de ``/contirubors``)_
-
-## License
-
-Ce projet est sous licence ``exemple: WTFTPL`` - voir le fichier [LICENSE.md](LICENSE.md) pour plus d'informations
 
