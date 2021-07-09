@@ -40,14 +40,29 @@ On explore également l’estimation de l’effet d’un traitement pour des sou
 
 La figure ci-dessus montre le schéma récapitulatif du notre pipeline. Tout d’abord, on commence par générer des données simulées. Pour cela, on produit une matrice de données X avec d colonnes et N lignes. Cette matrice représente les caractéristiques (features) des sujets étudiés, d correspond au nombre de caractéristiques de chaque individu et N est le nombre d’observations autrement dit le nombre de personnes participant à l’étude. Chaque observation i correspondant à une ligne Xi suit la loi normale.
 
+<p align="center">
+    <img src='img/formule1.JPG'>
+</p> 
+
 Ensuite, on simule l’affectation du traitement selon un vecteur W de longueur N. Le i-ème élément de ce vecteur correspond à une valeur dans {0, 1} indiquant si le sujet i reçoit le traitement. Lors de ce projet, on procède de deux façons pour calculer le vecteur W. Dans le premier cas, on attribue le traitement de manière aléatoire c’est-à-dire sans prendre compte des caractéristiques de l’individu. On fixe un paramètre p appelé score de propension dont la valeur est entre 0 et 1 et on génère N valeurs avec à chaque fois une probabilité p d’avoir 1 comme le montre la formule. Dans le deuxième cas, les caractéristiques des sujets étudiés sont considérées lors de l’attribution du traitement. Le score de propension devient une fonction de X. Par conséquent, chaque individu i a une probabilité différente d’avoir le traitement.
+
+<p align="center">
+    <img src='img/formule2.JPG'>
+</p> 
 
 Finalement, on simule les réponses potentielles de chaque individu au traitement. Pour cela on spécifie des fonctions mu0 et mu1 appelée les fonctions réponses, et on calcule les sorties Y selon la formule.
 
-A l’aide des données simulées générées, on estime l'effet conditionnel moyen du traitement (CATE) et l'effet moyen du traitement (ATE) à l’aide des différents estimateurs.
+<p align="center">
+    <img src='img/formule3.JPG'>
+</p> 
 
+A l’aide des données simulées générées, on estime l'effet conditionnel moyen du traitement (CATE) et l'effet moyen du traitement (ATE) à l’aide des différents estimateurs.
 Ensuite il est judicieux de mettre en place des indicateurs de qualité caractérisant la précision de chaque estimateur. Cependant l’ATE n’est pas une fonction de prédiction, c’est simplement un coeffcient réel qui mesure la magnitude d’un effet de traitement. Nous n’avons pas appris une fonction de prédiction qui pour un vecteur d’entre X renvoie une prédiction. Cela n’a donc pas de sens de calculer un critère de qualité prédictive (MSE, MAE, etc). On adopte deux méthodes pour évaluer la qualité de notre estimateur d’un effet de traitement.
 Premièrement, on calcule les intervalles de confiance sur l’ATE à partir de la version la plus simple du bootstrap. On tire un nombre m d’observations avec remise pour constituer un nouvel échantillon artificiel, puis on applique un estimateur pour estimer la valeur de l'ATE pour chaque échantillon. On répète ces deux étapes B fois et on récupère une liste contenant un nombre B de valeurs de l’ATE. A partir de ces répliques, nous pouvons construire un intervalle de confiance pour l’ATE de niveau (asymptotique) 1 − alpha.
+
+<p align="center">
+    <img src='img/formule_IC.JPG'>
+</p> 
 
 ## Résultats 
 
