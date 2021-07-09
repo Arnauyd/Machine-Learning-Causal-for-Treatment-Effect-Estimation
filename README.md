@@ -46,14 +46,14 @@ Finalement, on simule les réponses potentielles de chaque individu au traitemen
 
 ## Auteurs
 Membres de l'équipe : 
-* **Amal Benali* _alias_ [@outout14](https://github.com/)
-* **Fatima-Ezzahra Jait* _alias_ [@outout14](https://github.com/)
-* **Jean-Philippe Quach* _alias_ [@outout14](https://github.com/)
+* **Amal Benali** _alias_ [@AmalB](https://github.com/)
+* **Fatima-Ezzahra Jait** _alias_ [@FatiJait](https://github.com/FatiJait)
+* **Jean-Philippe Quach** _alias_ [@jpquach1](https://github.com/jpquach1)
 * **Mohammed El yaagoubi** _alias_ [@moelyaagoubi](https://github.com/moelyaagoubi)
-* **Arnaud Sangouard* _alias_ [@outout14](https://github.com/)
+* **Arnaud Sangouard** _alias_ [@Arnauyd](https://github.com/Arnauyd)
 
 Liste des encadrants :
-* Encadrants académiques : Florence D'alche-Buc - Nathan Noiry - Yannick Guyonvarch
-* Encadrants industriels : Habiboulaye Amadou Boubacar - Mehdi Rahim
+* **Encadrants académiques** : Florence D'alche-Buc - Nathan Noiry - Yannick Guyonvarch
+* **Encadrants industriels** : Habiboulaye Amadou Boubacar - Mehdi Rahim
 
 
