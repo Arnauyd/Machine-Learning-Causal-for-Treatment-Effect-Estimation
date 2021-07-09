@@ -64,6 +64,16 @@ Premièrement, on calcule les intervalles de confiance sur l’ATE à partir de 
     <img src='img/formule_IC.JPG'>
 </p> 
 
+### Approche basée sur le clustering
+
+Cette approche vient après la construction du pipeline et n’est pas du tout liée à cette dernière. Chacune a un but différent. Le pipeline d’apprentissage automatique causal permet d’effectuer plusieurs tests selon différents cas d’utilisation afin de trouver les forces et faiblesses de chaque estimateur. L’objectif de cette approche par clustering est de donner les moyens d'explorer et d'interpoler les résultats obtenus sur plusieurs cas d’utilisation via le pipeline.
+En effet, la personnalisation des traitements suivant les individus est un enjeu majeur, particulièrement pour Air Liquide. Pour cela, être en mesure d’estimer l'effet de traitement moyen conditionné à une sous-population, voir à un individu est nécessaire. Un effet de traitement est dit « hétérogène » lorsqu'il affecte différemment différents individus. Par exemple, le traitement d'une politique de suivi de la recherche d'emploi peut affecter différemment les hommes que les femmes, ou les personnes vivant dans des états différents.
+Par cette approche, on cherche à détecter et caractériser avec une approche par clustering. L’objectif final est de pouvoir estimer l’ATE sur des sous-population d’intérêts. La détection de ces populations est possible via des méthodes non supervisées classiques comme le modèle de mélange gaussien (Gaussian mixture model ou GMM) ou l’algorithme k-moyennes (k-means). L’identification de ces clusters peut se faire de trois manières :
+* Clustering en fonction des valeurs du CATE : on se base sur l’hétérogénéité de l'effet de traitement moyen sur une population (effet de traitement moyen conditionné à une sous
+population).
+* Clustering en fonction des caractéristiques des individus de la population d’intérêt (âge, genre, antécédents, etc.).
+* Clustering hybride : on tient compte et des caractéristiques des individus de la population et des valeurs du CATE.
+
 ## Résultats 
 
 Le pipeline d’apprentissage automatique causal permet d'effectuer plusieurs simulations où on considère des situations différentes pour avoir des informations sur le comportement de chaque estimateur. Ce pipeline produit deux types de sorties.
