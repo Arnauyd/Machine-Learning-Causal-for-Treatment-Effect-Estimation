@@ -88,7 +88,10 @@ population).
 
 ## Résultats 
 
-Le pipeline d’apprentissage automatique causal permet d'effectuer plusieurs simulations où on considère des situations différentes pour avoir des informations sur le comportement de chaque estimateur. Ce pipeline produit deux types de sorties.
+Le pipeline d’apprentissage automatique causal permet d'effectuer plusieurs simulations où on considère des situations différentes pour avoir des informations sur le comportement de chaque estimateur. Ce pipeline produit deux types de sorties. <br/>
+On peut générer des graphes mettant en valeur la performance d’un estimateur sur des données
+simulées en fonction du nombre d’observations. Ce graphe montre en plus l'intervalle de confiance de l’ATE. On remarque sur le graohe que plus le nombre d'observations augmente plus la largeur de l’intervalle de confiance diminue et donc l'estimation devient plus précise. On trace les résultats des estimateurs da la librairie causalml afin de les comparer aux résultats de nos estimateurs.
+
 
 ## Auteurs
 Membres de l'équipe : 
