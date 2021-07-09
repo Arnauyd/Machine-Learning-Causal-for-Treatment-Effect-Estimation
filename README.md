@@ -3,10 +3,6 @@
 
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)  [![forthebadge](http://forthebadge.com/images/badges/powered-by-electricity.svg)](http://forthebadge.com)
 
- ##### Encadrants industriels : Habiboulaye Amadou Boubacar - Mehdi Rahim
- ##### Encadrants académiques : Florence D'alche-Buc - Nathan Noiry - Yannick Guyonvarch
- ##### Membres de l'équipe : Amal Benali - Fatima-Ezzahra Jait - Jean-Philippe Quach - Mohammed El yaagoubi -  Arnaud Sangouard
-
 ## Pour commencer
 
 Entrez ici les instructions pour bien débuter avec votre projet...
@@ -50,10 +46,14 @@ Finalement, on simule les réponses potentielles de chaque individu au traitemen
 
 ## Auteurs
 Membres de l'équipe : 
-* **Mohammed El yaagoubi** _alias_ [@outout14](https://github.com/moelyaagoubi)
-* **Arnaud Sangouard** _alias_ [@outout14](https://github.com/moelyaagoubi)
+* **Amal Benali* _alias_ [@outout14](https://github.com/)
+* **Fatima-Ezzahra Jait* _alias_ [@outout14](https://github.com/)
+* **Jean-Philippe Quach* _alias_ [@outout14](https://github.com/)
+* **Mohammed El yaagoubi** _alias_ [@moelyaagoubi](https://github.com/moelyaagoubi)
+* **Arnaud Sangouard* _alias_ [@outout14](https://github.com/)
 
-Lisez la liste des [contributeurs](https://github.com/your/project/contributors) pour voir qui à aidé au projet !
+Liste des encadrants :
+* Encadrants académiques : Florence D'alche-Buc - Nathan Noiry - Yannick Guyonvarch
+* Encadrants industriels : Habiboulaye Amadou Boubacar - Mehdi Rahim
 
-_(pour le lien mettez simplement l'URL de votre projet suivi de ``/contirubors``)_
 
