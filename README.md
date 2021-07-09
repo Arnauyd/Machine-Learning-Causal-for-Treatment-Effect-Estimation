@@ -3,7 +3,7 @@
 
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)  [![forthebadge](http://forthebadge.com/images/badges/powered-by-electricity.svg)](http://forthebadge.com)
 
-**Table of contents**  
+**Table des matières**  
 
 1. [Guide d'utilisation](#guide)  <br/>
     1.1. [Pré-requis](#prerequis)  <br/>
