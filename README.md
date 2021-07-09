@@ -49,8 +49,9 @@ Ensuite, on simule l’affectation du traitement selon un vecteur W de longueur 
 Finalement, on simule les réponses potentielles de chaque individu au traitement. Pour cela on spécifie des fonctions mu0 et mu1 appelée les fonctions réponses, et on calcule les sorties Y selon la formule.
 
 ## Auteurs
-Listez le(s) auteur(s) du projet ici !
-* **Jhon doe** _alias_ [@outout14](https://github.com/outout14)
+Membres de l'équipe : 
+* **Mohammed El yaagoubi** _alias_ [@outout14](https://github.com/moelyaagoubi)
+* **Arnaud Sangouard** _alias_ [@outout14](https://github.com/moelyaagoubi)
 
 Lisez la liste des [contributeurs](https://github.com/your/project/contributors) pour voir qui à aidé au projet !
 
