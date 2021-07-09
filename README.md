@@ -30,9 +30,11 @@ _exemple_: Executez la commande ``telnet mapscii.me`` pour commencer ensuite [..
 
 Ensuite vous pouvez montrer ce que vous obtenez au final...
 
-## Démarrage
+## Description du projet
 
-Dites comment faire pour lancer votre projet
+Durant notre projet, on fait des études sur des données simulées dans le cadre d’un traitement binaire. Les données sont séparées en deux parties. Le premier groupe représente le groupe témoin et le deuxième correspond au groupe ayant reçu le traitement. 
+Dans cette partie, on explique les différentes étapes lors de la construction du pipeline d’apprentissage automatique causal i.e. causal machine learning. Ce dernier est un outil utilisé pour mener une étude de simulation approfondie comparant les performances des différents estimateurs afin de mieux appréhender leurs applications sur des données réelles.
+On explore également l’estimation de l’effet d’un traitement pour des sous-populations d’intérêts. L’ambition est de trouver des profils types à l’aide d’une approche basée sur le clustering pour recommander le type d’intervention le plus adapté à chaque individu ou à chaque groupe d’individus.
 
 ## Fabriqué avec
 
