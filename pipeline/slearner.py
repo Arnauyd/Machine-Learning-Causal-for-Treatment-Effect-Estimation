@@ -35,3 +35,16 @@ class SLearner(BaseEstimator, ClassifierMixin):
 
     def predict_ATE(self):
         return (self.mu1_hat - self.mu0_hat).mean()
+    
+    
+
+
+def run_slearner(X, W, Y, baselearner):
+  slearner = SLearner(base_estimator = baselearner)
+  slearner.fit(X,W,Y)
+  
+  cate_hat_S = slearner.predict_CATE(X)
+  #print("- Les dimensions du CATE = {}.".format(cate_hat_S.shape))
+  ate_hat_S = slearner.predict_ATE()
+  #print("- L'estimation de la valeur de l'ATE = {}.".format(ate_hat_S))
+  return ate_hat_S

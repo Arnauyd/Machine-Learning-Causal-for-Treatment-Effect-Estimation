@@ -36,3 +36,16 @@ class TLearner(BaseEstimator, ClassifierMixin):
 
     def predict_ATE(self):
         return (self.Y_1_hat - self.Y_0_hat).mean()
+    
+    
+    
+def run_tlearner(X, W, Y, baselearner0, baselearner1):
+  tlearner = TLearner(base_estimator0 = baselearner0, 
+                      base_estimator1 = baselearner1)
+  tlearner.fit(X,W,Y)
+
+  cate_hat_T = tlearner.predict_CATE(X)
+  #print("- Les dimensions du CATE = {}.".format(cate_hat_S.shape))
+  ate_hat_T = tlearner.predict_ATE()
+  #print("- L'estimation de la valeur de l'ATE = {}.".format(ate_hat_T))
+  return ate_hat_T

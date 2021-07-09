@@ -77,5 +77,7 @@ if __name__ == '__main__':
                        base_learner_homemade=SLearner(), base_learner_causalml=LRSRegressor())
     """
     
+    # Tab generation
+    #tab = tab_gen(N, f, g)
     
     
