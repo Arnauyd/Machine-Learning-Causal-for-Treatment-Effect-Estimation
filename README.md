@@ -5,11 +5,11 @@
 
 **Table of contents**  
 
-1. [Guide d'utilisation](#guide) 
-    1.1. [Pré-requis](#prerequis) 
+1. [Guide d'utilisation](#guide)  <br/>
+    1.1. [Pré-requis](#prerequis)  <br/>
     1.2. [Installation](#install) 
-2. [Description du projet](#description)
-    2.1. [Pipeline du machine learning causal](#pipeline) 
+2. [Description du projet](#description)  <br/>
+    2.1. [Pipeline du machine learning causal](#pipeline)  <br/>
     2.2. [Approche basée sur le clustering](#clustering)  
 3. [Résultats](#resultats) 
 4. [Auteurs](#auteurs) 
