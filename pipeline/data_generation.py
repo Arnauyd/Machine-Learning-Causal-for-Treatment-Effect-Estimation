@@ -5,33 +5,39 @@ Created on Sun Apr  4 07:35:25 2021
 @author: MELYAAGOUBI
 """
 
+import random
 import numpy as np
 from scipy.stats import bernoulli
 
-def treatment_assign(Nobs, d, X, p):
+
+
+def treatment_assign(Nobs, dim, X, p=None):
     '''
     Input: 
     
-    p : score de propension.
-    Nobs : Nombre de lignes da la matrice X i.e. nombre de personnes.
-    
+    - Nobs : Nombre de lignes da la matrice X i.e. nombre de personnes.
+    - dim : Nombre de colonnes de la matrice X i.e. nombres de caractéristiques (features).
+    - X : La matrice X des features de dimension (Nobs, dim).
+    - p : Score de propension. 
+
     Output:
     
-    W : Vecteur de taille Nobs contenant des 0 ou 1 pour désigner l'affectation du traitement.
+    - W : Vecteur de dimension (1, Nobs) contenant des 0 ou 1 pour désigner 
+          l'affectation du traitement.
     '''
     sigmoid = lambda x: 1/(1+np.exp(-x))
-    
-    omega = np.random.uniform(0, 1, (Nobs, d))
-    psi = np.random.uniform(0, 1, (Nobs, 1))
+    omega = np.random.uniform(0, 1, (Nobs, dim))
 
-    if p == None:
+    if type(p) == float :
+        W = bernoulli.rvs(p, size = Nobs) 
+        
+    else :
       p = np.zeros(Nobs)
       for i in range(Nobs):
         p[i] = sigmoid(omega[i] @ X[i])
+        
       W = bernoulli.rvs(p, size = Nobs) 
-    else:
-      W = bernoulli.rvs(p, size = Nobs) 
-    
+
     return W
 
 
@@ -39,18 +45,19 @@ def causal_generation(Nobs, dim, beta, bias, f, g, p):
     '''
     Input :
     
-    Nobs : Nombre de lignes da la matrice X i.e. nombre de personnes.
-    dim : Nombre de colonnes de la matrice X i.e. nombres de caractéristiques (features).
-    beta : Vecteur de dimension (2, dim).
-    bias : Vecteur de dimension (1, 2).
-    W : Vecteur de dimension (1, Nobs) contenant des 0 ou 1 pour désigner 
-    l'affectation du traitement.
-    f et g sont des fonctions.
+    - Nobs : Nombre de lignes da la matrice X i.e. nombre de personnes.
+    - dim : Nombre de colonnes de la matrice X i.e. nombres de caractéristiques (features).
+    - beta : Vecteur de dimension (2, dim).
+    - bias : Vecteur de dimension (1, 2).
+    - f et g : Fonctions pour calculer les résultats Y (outputs).
+    - p : Argument de la fonction treatment_assign().
     
     Output:
     
-    (X, Y, W) : Triplet contenant la matrice X des features, Y le vecteur des 
-                résultats potentiels et W le vecteur de l'affectation du traitement.
+    (X, Y, W) : Triplet contenant la matrice X des features de dimension (Nobs, dim), 
+                Y le vecteur des résultats potentiels (Nobs, 1) et W le vecteur de 
+                longueur (1, Nobs) contenant des 0 ou 1 pour désigner l'affectation 
+                du traitement.
     '''
     moy = np.zeros(dim)
     var = np.eye(dim)
@@ -69,31 +76,55 @@ def causal_generation(Nobs, dim, beta, bias, f, g, p):
     return (X, W, Y)
 
 
-def causal_generation_bootstrap(beta, bias, B, Nobs, dim, f, g, p):
+def random_select_bootstrap(Nobs, sample_size, Nsamples):
     '''
-    Create list of bootstrap elements
+    Choix d'indices à partir de l'ensemble des données (X, W, Y) à l'aide de 
+    la méthode boostrap.
+   
     Input :
+        
+    - Nobs : Nombre de lignes da la matrice X i.e. nombre de personnes.
+    - sample_size : Le nombre de personnes selectionnés à chaque tirage avec remise.
+    - Nsamples : Le nombre de fois que l'opération de tirage est répétée.
     
-    B : Nombre d'échantillons Boostrap, 999 est une valeur par défaut pertinente
-    Nobs : Nombre de lignes da la matrice X i.e. nombre de personnes, 1000 par défaut
-    dim : Nombre de colonnes de la matrice X i.e. nombres de caractéristiques 
-    (features), 2 par défaut
-    beta : Vecteur de dimension (2, dim).
-    bias : Vecteur de dimension (1, 2).
-    W : Vecteur de dimension (1, Nobs) contenant des 0 ou 1 pour désigner 
-    l'affectation du traitement.
-    f et g sont des fonctions, identité par défaut
+    Output :
+        
+    - index_samples : Une liste contenant tous les échantillons d'indices générés 
+                      à l'aide des tirages avec remise.
+
+    '''
+    index_samples = []
+    for i in range(Nsamples):
+        samples = random.sample(range(1, Nobs), sample_size)
+        index_samples.append(samples)
+        
+    return index_samples
+
+
+def causal_generation_bootstrap(Nobs, dim, beta, bias, f, g, p, B):
+    '''
+    Création d'une liste à l'aide de la méthode boostrap
     
+    Input :
+        
+    - Nobs : Nombre de lignes da la matrice X i.e. nombre de personnes.
+    - dim : Nombre de colonnes de la matrice X i.e. nombres de caractéristiques (features).
+    - beta : Vecteur de dimension (2, dim).
+    - bias : Vecteur de dimension (1, 2).
+    - f et g : Fonctions pour calculer les résultats Y (outputs).
+    - p : Argument de la fonction treatment_assign().
+    - B : Nombre d'échantillons Boostrap, 999 est une valeur par défaut pertinente
+  
     Output:
-    
-    [(X, W, Y)] : liste de B Triplets contenant la matrice X des features, W 
-    le vecteur de l'affectation du traitement et Y le vecteur des résultats 
-    potentiels. 
+        
+    - [(X, W, Y)] : liste de B Triplets contenant la matrice X des features, W le vecteur 
+                    de l'affectation du traitement et Y le vecteur des résultats potentiels. 
                 
     '''
-    Bootstraps=[]
+    Bootstraps = []
 
     for b in range(B):
         Bootstraps.append(causal_generation(Nobs, dim, beta, bias, f, g, p))
       
     return Bootstraps
+

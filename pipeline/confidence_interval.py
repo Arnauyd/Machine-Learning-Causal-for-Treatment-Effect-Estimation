@@ -10,7 +10,7 @@ from scipy.stats import norm
 
 from slearner import SLearner
 
-def IC(Bootstraps, base_metalerner=SLearner(), alpha=0.05):
+def IC(X, W, Y, samples, base_metalearner, alpha=0.05):
     
     '''
     Calculate l'intervalle de confiance d'un métalearner
@@ -26,22 +26,24 @@ def IC(Bootstraps, base_metalerner=SLearner(), alpha=0.05):
     '''
     
     #Calcul de l'ATE les B estimateurs du Bootstrap
-    ATEs = np.zeros((len(Bootstraps)))
-    base_metalearner = SLearner()
+    N = len(samples)
+    ATEs = np.zeros((N))
+    #base_metalearner = SLearner()
     
-    for i in range(len(Bootstraps)):
-        base_metalearner.fit(Bootstraps[i][0], Bootstraps[i][1], Bootstraps[i][2])
-        base_metalearner.predict_CATE(Bootstraps[i][0])
+    for i in range(N):
+        Xb, Wb, Yb = X[samples[i]], W[samples[i]], Y[samples[i]]
+        base_metalearner.fit(Xb, Wb, Yb)
+        base_metalearner.predict_CATE(Xb)
         ATEs[i] = base_metalearner.predict_ATE()
     
     #Calcul des intervalles de confiance
     Mu_ATEs = ATEs.mean()
-    std_ATEs = ATEs.std()
-    ATEs_tilt = (ATEs-Mu_ATEs)/std_ATEs
-    ATEs_tilt.sort()
+    #std_ATEs = ATEs.std()
+    #ATEs_tilt = (ATEs-Mu_ATEs)/std_ATEs
+    #ATEs_tilt.sort()
     ATEs.sort()
     
-    B = len(Bootstraps)
-    IC_inf, IC_sup = ATEs[int(B*(alpha/(2)))], ATEs[int(B*(1-alpha/(2)))]
+    
+    IC_inf, IC_sup = ATEs[int(N*(alpha/(2)))], ATEs[int(N*(1-alpha/(2)))]
     
     return Mu_ATEs, IC_inf, IC_sup
