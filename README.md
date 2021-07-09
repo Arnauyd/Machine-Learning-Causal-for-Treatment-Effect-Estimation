@@ -38,6 +38,11 @@ On explore également l’estimation de l’effet d’un traitement pour des sou
 
 ### Pipeline du machine learning causal
 
+<p align="center">
+    <img src='img/pipeline.JPG'>
+</p> 
+
+La figure ci-dessus montre le schéma récapitulatif du notre pipeline. Tout d’abord, on commence par générer des données simulées. Pour cela, on produit une matrice de données X avec d colonnes et N lignes. Cette matrice représente les caractéristiques (features) des sujets étudiés, d correspond au nombre de caractéristiques de chaque individu et N est le nombre d’observations autrement dit le nombre de personnes participant à l’étude. Chaque observation i correspondant à une ligne $X_{i}$ suit la loi normale.
 
 
 ## Fabriqué avec
