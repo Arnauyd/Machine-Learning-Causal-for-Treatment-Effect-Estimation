@@ -3,11 +3,22 @@
 
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)  [![forthebadge](http://forthebadge.com/images/badges/powered-by-electricity.svg)](http://forthebadge.com)
 
-## Pour commencer
+**Table of contents**  
 
-Entrez ici les instructions pour bien débuter avec votre projet...
+I. [Guide d'utilisation](#guide)   
+    I.1 [Pré-requis](#prerequis) 
+    I.2 [Installation](#install) 
+II. [Description du projet](#description)   
+    1.1 [Pipeline du machine learning causal](#pipeline)  
+    1.2 [Approche basée sur le clustering](#clustering)  
+III. [Résultats](#resultats) 
+VI. [Auteurs](#auteurs)  
 
-### Pré-requis
+## I. Guide d'utilisation <a class="anchor" id="guide"></a>  
+
+Suivez les instructions ci-dessous pour bien lancer le projet !
+
+### Pré-requis <a class="anchor" id="prerequis"></a>  
 
 Ce qu'il est requis pour commencer avec votre projet...
 
@@ -15,7 +26,7 @@ Ce qu'il est requis pour commencer avec votre projet...
 - Programme 2
 - etc...
 
-### Installation
+### Installation <a class="anchor" id="install"></a>  
 
 ``` system
 $ git clone https://github.com/moelyaagoubi/depot_projet_air_liquide
@@ -23,17 +34,14 @@ $ cd pipeline
 $ python main.py
 ```
 
-
-Ensuite vous pouvez montrer ce que vous obtenez au final...
-
-## Description du projet
+## II. Description du projet <a class="anchor" id="description"></a>  
 
 Durant notre projet, on fait des études sur des données simulées dans le cadre d'un traitement binaire. Les données sont séparées en deux parties. Le premier groupe représente le groupe témoin et le deuxième correspond au groupe ayant reçu le traitement. <br/>
 Dans cette partie, on explique les différentes étapes lors de la construction du pipeline d'apprentissage automatique causal i.e. causal machine learning. Ce dernier est un outil utilisé pour mener une étude de simulation approfondie comparant les performances des différents estimateurs afin de mieux appréhender leurs applications sur des données réelles. <br/>
 On explore également l'estimation de l'effet d'un traitement pour des sous-populations d'intérêts. L'ambition est de trouver des profils types à l'aide d'une approche basée sur le clustering pour recommander le type d'intervention le plus adapté à chaque individu ou à chaque groupe d'individus.
 
-### Pipeline du machine learning causal
-
+### Pipeline du machine learning causal <a class="anchor" id="pipeline"></a>  
+ 
 <p align="center">
     <img src='img/pipeline.JPG'>
 </p> 
@@ -77,7 +85,7 @@ Ce calcul est compliqué dès lors que la dimension d de la matrix X est supéri
     <img src='img/formule_mc1.JPG'>
 </p> 
 
-### Approche basée sur le clustering
+### Approche basée sur le clustering <a class="anchor" id="clustering"></a>  
 
 Cette approche vient après la construction du pipeline et n’est pas du tout liée à cette dernière. Chacune a un but différent. Le pipeline d’apprentissage automatique causal permet d’effectuer plusieurs tests selon différents cas d’utilisation afin de trouver les forces et faiblesses de chaque estimateur. L’objectif de cette approche par clustering est de donner les moyens d'explorer et d'interpoler les résultats obtenus sur plusieurs cas d’utilisation via le pipeline. <br/>
 En effet, la personnalisation des traitements suivant les individus est un enjeu majeur, particulièrement pour Air Liquide. Pour cela, être en mesure d’estimer l'effet de traitement moyen conditionné à une sous-population, voir à un individu est nécessaire. Un effet de traitement est dit « hétérogène » lorsqu'il affecte différemment différents individus. Par exemple, le traitement d'une politique de suivi de la recherche d'emploi peut affecter différemment les hommes que les femmes, ou les personnes vivant dans des états différents. <br/>
@@ -87,7 +95,7 @@ population).
 * Clustering en fonction des caractéristiques des individus de la population d’intérêt (âge, genre, antécédents, etc.).
 * Clustering hybride : on tient compte et des caractéristiques des individus de la population et des valeurs du CATE.
 
-## Résultats 
+## Résultats <a class="anchor" id="resultats"></a>  
 
 Le pipeline d’apprentissage automatique causal permet d'effectuer plusieurs simulations où on considère des situations différentes pour avoir des informations sur le comportement de chaque estimateur. Ce pipeline produit deux types de sorties. <br/>
 On peut générer des graphes mettant en valeur la performance d’un estimateur sur des données
@@ -96,7 +104,8 @@ simulées en fonction du nombre d’observations. Ce graphe montre en plus l'int
 Le deuxième type de sortie est un fichier de type PDF contenant un tableau de résultats de tous les cas d’usage simulés. La Figure 6.2 montre un exemple de ce type de fichiers. Les colonnes du tableau représentent les estimateurs utilisés et les lignes sont les différents cas d’utilisations simulés. Chaque cellule contient le résultat de l’ATE pour une situation donnée calculé à l'aide d'un estimateur. Le calcul est répété plusieurs fois, et on fait la moyenne de toutes les valeurs calculées en précisant l’écart-type de l’ensemble des valeurs de l’ATE. <br/>
 Cet outil va servir de document de synthèse d’abord puis d’analyse en permettant aux équipes d'Air Liquide de faire plusieurs tests afin de tirer le maximum d'informations sur les estimateurs afin de mieux les utiliser sur des données réelles.
 
-## Auteurs
+## Auteurs <a class="anchor" id="auteurs"></a>  
+
 Membres de l'équipe : 
 * **Amal Benali** _alias_ [@AmalB](https://github.com/)
 * **Fatima-Ezzahra Jait** _alias_ [@FatiJait](https://github.com/FatiJait)
