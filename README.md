@@ -17,11 +17,11 @@ Ce qu'il est requis pour commencer avec votre projet...
 
 ### Installation
 
-Les étapes pour installer votre programme....
-
-Dites ce qu'il faut faire...
-
-_exemple_: Executez la commande ``telnet mapscii.me`` pour commencer ensuite [...]
+``` system
+$ git clone https://github.com/moelyaagoubi/depot_projet_air_liquide
+$ cd pipeline
+$ python main.py
+```
 
 
 Ensuite vous pouvez montrer ce que vous obtenez au final...
