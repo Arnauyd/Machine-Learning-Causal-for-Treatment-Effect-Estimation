@@ -28,10 +28,24 @@ Ce qu'il est requis pour commencer avec votre projet...
 
 ### 1.2. Installation <a class="anchor" id="install"></a>  
 
+Pour lancer le programme sur votre machine personnelle :
+
 ``` system
 $ git clone https://github.com/moelyaagoubi/depot_projet_air_liquide
 $ cd pipeline
 $ python main.py
+```
+On installe les librairies nécessaires :
+
+`pip install -r requirements.txt` 
+
+et pour installer la librairie causalml :
+
+``` system
+$ git clone https://github.com/uber/causalml.git
+$ cd causalml
+$ python setup.py build_ext --inplace
+$ python setup.py install
 ```
 
 ## 2. Description du projet <a class="anchor" id="description"></a>  
