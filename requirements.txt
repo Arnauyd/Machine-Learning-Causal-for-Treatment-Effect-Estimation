@@ -1,16 +1,13 @@
-causalml==0.9.0
 inspect-it==0.3.2
 matplotlib==3.4.2
 numpy==1.17.4
 pandas==0.25.3
 regex==2019.11.1
 requests==2.22.0
-os-sys==2.1.4
 scikit-learn==0.23.0
 scipy==1.4.1
 seaborn==0.11.1
 sklearn==0.0
-spacy==2.2.3
 tensorflow==2.3.0
 termcolor==1.1.0
 warn==0.1.0
