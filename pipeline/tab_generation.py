@@ -13,10 +13,8 @@ pd.set_option('display.max_columns', None)
 import inspect
 from termcolor import colored
 
-from sklearn.linear_model import LinearRegression
-from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import GradientBoostingRegressor
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.linear_model import LinearRegression, LogisticRegression
+from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor
 
 from data_generation import causal_generation
 
