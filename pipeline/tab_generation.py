@@ -5,8 +5,11 @@ Created on Fri Jul  9 23:25:40 2021
 @author: MELYAAGOUBI
 """
 
+import sys
 import numpy as np
 import pandas as pd
+pd.set_option('display.max_rows', None)
+pd.set_option('display.max_columns', None)
 import inspect
 from termcolor import colored
 
@@ -55,7 +58,7 @@ def tab_gen(N, beta, bias, f, g):
       bl = base_learners[b]
       b2 = base_learners1[b]
       
-      for d in [5, 10]:
+      for d in [5]:
         beta0 = np.random.uniform(1, 30, (1, d))
         beta = np.vstack((beta0, beta0))                      
         
@@ -116,14 +119,6 @@ def tab_gen(N, beta, bias, f, g):
           dr_std_value = round(np.std(drlearner), 3)
           res["Doubly Robust Learning"].append(str(dr_mean_value) + " ± " + str(dr_std_value))
     
-    
-    
-    print(colored("Results of ATE estimation based on a simulation model:", attrs=['bold','underline']))
-    print()
-
-    print("- Nombre de d'observations [N] = {}.".format(N))
-    print("- La fonction f(x) = {}.".format(printfunc(f)))
-    print("- La fonction g(x) = {}.".format(printfunc(g)))
 
     res["Dimension"] = dim
     res["Base Learner"] =  bases
@@ -133,4 +128,21 @@ def tab_gen(N, beta, bias, f, g):
     df = pd.DataFrame(res, columns = list(res.keys()))
     df = df.set_index(["Base Learner", "Dimension", "Monte Carlo ATE", "Propension score"])
     
-    return df
+    # Saving the reference of the standard output
+    original_stdout = sys.stdout    
+ 
+    with open('tab.txt', 'w') as file:
+        sys.stdout = file
+        print()
+        print("              Results of ATE estimation based on a simulation model:")
+        print()
+    
+        print("- Nombre de d'observations [N] = {}.".format(N))
+        print("- La fonction f(x) = {}.".format(printfunc(f)))
+        print("- La fonction g(x) = {}.".format(printfunc(g)))
+
+        print(df)
+        # Reset the standard output
+        sys.stdout = original_stdout
+    
+    

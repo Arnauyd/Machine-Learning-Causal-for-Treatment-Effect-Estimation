@@ -23,16 +23,16 @@ from tab_generation import tab_gen
 
 if __name__ == '__main__':
     # paramètres pour faciliter le calcul de l'ATE par intégration
-    N = 10000
+    N = 1000
     d = 2                                     # d = 2, afin de pouvoir être calculé par intégration et avec Monte Carlo
     p = 0.7
     beta = np.random.uniform(1, 30, (1, d))
     beta = np.vstack((beta,beta))               # beta0 = beta1           
     bias = np.array([10,0])                   # Gamma0 = Gamma1 
-    f = lambda x:x
+    f = lambda x:np.sin(x)
     g = lambda x:x
     
-    save_data("simu_data.txt", N, d, p, f, g, "Linear regression", "S-Learner et T-Learner")
+    #save_data("simu_data.txt", N, d, p, f, g, "Linear regression", "S-Learner et T-Learner")
     
     print("------------ Estimation de l'ATE/CATE sur des données synthétiques --------------")
     print()
@@ -69,7 +69,7 @@ if __name__ == '__main__':
     
     
     # Visualization
-    visualization(beta, bias, d, f, g, p, base_metalearner = SLearner())
+    #visualization(beta, bias, d, f, g, p, base_metalearner = SLearner())
     """
     nb_obs = [i for i in range(100,2000,100)]
     
@@ -78,6 +78,6 @@ if __name__ == '__main__':
     """
     
     # Tab generation
-    #tab = tab_gen(N, f, g)
+    tab = tab_gen(N, beta, bias, f, g)
     
     

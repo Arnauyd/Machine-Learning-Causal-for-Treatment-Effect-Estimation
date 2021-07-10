@@ -14,7 +14,7 @@ from sklearn.calibration import CalibratedClassifierCV
 class DRLearner(BaseEstimator, ClassifierMixin):
     """ Homemade DRLearner class """
     
-    def __init__(self, model_regression, model_propensity, model_final):
+    def __init__(self, model_regression, model_final, model_propensity=LogisticRegression()):
         # init
         self.model_regression = model_regression
         self.model_propensity = model_propensity
@@ -45,7 +45,6 @@ class DRLearner(BaseEstimator, ClassifierMixin):
         #Stage 2 : fit model final
         self.model_final.fit(self.X, self.Y_pred_1 - self.Y_pred_0)
         
-
     def predict_CATE(self, x):
         # Complete the method         
         self.CATE_hat = self.model_final.predict(x)
@@ -56,9 +55,9 @@ class DRLearner(BaseEstimator, ClassifierMixin):
     
     
     
-    
-def run_drlearner(X, W, Y, model_regression, model_propensity, model_final):
-  drlearner = DRLearner(model_regression, model_propensity, model_final)
+
+def run_drlearner(X, W, Y, model_regression, model_final):
+  drlearner = DRLearner(model_regression, model_final)
   drlearner.fit(X,W,Y)
 
   cate_hat_dr = drlearner.predict_CATE(X)

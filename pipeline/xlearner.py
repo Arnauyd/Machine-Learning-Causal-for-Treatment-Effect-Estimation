@@ -14,7 +14,8 @@ from sklearn.base import BaseEstimator, ClassifierMixin
 class XLearner(BaseEstimator, ClassifierMixin):
     """ Homemade XLearner class """
     
-    def __init__(self, outcome_learner0, outcome_learner1, effect_learner0, effect_learner1):
+    def __init__(self, outcome_learner0, outcome_learner1, 
+                 effect_learner0=LinearRegression(), effect_learner1=LinearRegression()):
         # init
         self.outcome_learner0 = outcome_learner0
         self.outcome_learner1 = outcome_learner1
@@ -36,8 +37,8 @@ class XLearner(BaseEstimator, ClassifierMixin):
         self.D1 = self.Y[self.W==1] - self.mu_0.predict(X[self.W==1,:])    
         
         #estimate τ1(x) = E[D1|X=x], and τ0(x) = E[D0|X=x] using machine learning models:
-        self.tau_0 = self.effect_learner0 .fit(X[self.W==0,:], self.D0)
-        self.tau_1 = self.effect_learner1 .fit(X[self.W==1,:], self.D1)
+        self.tau_0 = self.effect_learner0.fit(X[self.W==0,:], self.D0)
+        self.tau_1 = self.effect_learner1.fit(X[self.W==1,:], self.D1)
         
 
     def predict_CATE(self, x, p):
@@ -51,9 +52,8 @@ class XLearner(BaseEstimator, ClassifierMixin):
     
 
 
-def run_xlearner(X, W, Y, outcome_learner0, outcome_learner1, effect_learner0, effect_learner1):
-  xlearner = XLearner(outcome_learner0, outcome_learner1, 
-                      effect_learner0, effect_learner1)
+def run_xlearner(X, W, Y, outcome_learner0, outcome_learner1):
+  xlearner = XLearner(outcome_learner0, outcome_learner1)
   xlearner.fit(X,W,Y)
   cate_hat_X = xlearner.predict_CATE(X, W)
   ate_hat_X = xlearner.predict_ATE()
