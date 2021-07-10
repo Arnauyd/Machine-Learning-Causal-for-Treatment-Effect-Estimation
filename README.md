@@ -20,11 +20,8 @@ Suivez les instructions ci-dessous pour bien lancer le projet !
 
 ### 1.1 Pré-requis <a class="anchor" id="prerequis"></a>  
 
-Ce qu'il est requis pour commencer avec votre projet...
-
-- Programme 1
-- Programme 2
-- etc...
+Ce qu'il est requis pour commencer avec votre projet :
+* Installer Python version >= 3.8
 
 ### 1.2. Installation <a class="anchor" id="install"></a>  
 
